@@ -1,7 +1,10 @@
 import numpy as np
 import torch
 import torch.nn as nn
-from gym.spaces import Box, Discrete
+
+import sys
+sys.path.append("../../../../park") 
+from park.spaces import Box, Discrete
 from torch.distributions.categorical import Categorical
 from torch.distributions.normal import Normal
 
@@ -96,7 +99,7 @@ class ActorCritic(nn.Module):
         action_space,
         hidden_sizes=(64, 64),
         activation=torch.tanh,
-        output_activation=None,
+        output_activation=torch.sigmoid,
         policy=None,
     ):
         super(ActorCritic, self).__init__()
